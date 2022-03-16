@@ -1,0 +1,48 @@
+local ID = "4589052885"
+local C = game:HttpGet("https://www.roblox.com/studio/plugins/info?assetId="..ID):match"value=.(%d+)"
+
+print("&assetversionid=" .. C) -- prints the assetversionID
+
+local normalid = "" .. C
+local assetvid = "assetversionid"
+
+
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+ if v.ClassName == "Tool" and v:FindFirstChild("Handle") and v:FindFirstChildOfClass("RemoteEvent") and v.Handle:FindFirstChildOfClass("Sound") then
+        v.Parent = game.Players.LocalPlayer.Character
+ end
+end
+local Tag = "0&assetName=[</> Admin] [<vss2324,Kax9999,Mp34746>] "
+local Baits1 = "&id=004907650438"
+local Baits2 = ""
+local char_to_hex = function(c)
+      return string.format("%%%02X", string.byte(c))
+    end
+    
+    local function urlencode(url)
+      if url == nil then
+        return
+      end 
+      url = url:gsub("\n", "\r\n")
+      url = url:gsub(".", char_to_hex)
+      url = url:gsub(" ", "+")
+      return url
+    end
+    local version = urlencode(assetvid)
+local char_to_hex = function(c)
+      return string.format("%%%02X", string.byte(c))
+    end
+    
+local total = Tag .. '&' .. version ..'=' .. normalid  .. Baits2
+
+     for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if string.find(string.lower(v.Name),'boomb') then
+            v.Remote:FireServer("PlaySong", total);
+        end
+     end
+     wait(.4)
+       for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v.ClassName == "Tool" and v:FindFirstChild("Handle") and v:FindFirstChildOfClass("RemoteEvent") and v.Handle:FindFirstChildOfClass("Sound") then
+        v.Handle.Sound.TimePosition = 0
+    end
+end
